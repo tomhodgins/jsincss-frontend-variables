@@ -1,0 +1,25 @@
+{
+  "name": "jsincss-frontend-variables",
+  "version": "0.0.1",
+  "description": "A frontend variables plugin for jsincss",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomhodgins/jsincss-frontend-variables.git"
+  },
+  "keywords": [
+    "jsincss",
+    "frontend",
+    "variables",
+    "css"
+  ],
+  "author": "Tommy Hodgins",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tomhodgins/jsincss-frontend-variables/issues"
+  },
+  "homepage": "https://github.com/tomhodgins/jsincss-frontend-variables#readme"
+}
