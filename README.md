@@ -62,38 +62,36 @@ This example will use the `jsincss` plugin to load a JS-in-CSS stylesheet making
   import jsincss from 'https://unpkg.com/jsincss/index.js'
   import variables from 'https://unpkg.com/jsincss-frontend-variables/index.js'
 
-  jsincss(() => {
+  jsincss(() => `
 
-    return `
+    ${variables('ul', `
+      --color: blue
+    `)}
+    ${variables('ul li', `
+      color: var(--color);
+      background: var(--background);
+    `)}
 
-      ${variables('ul', `
-        --color: blue
-      `)}
-      ${variables('ul li', `
-        color: var(--color);
-        background: var(--background);
-      `)}
-
-    `
-
-  })
+  `)
 </script>
 ```
 
 It's also possible to write your stylesheets as a separate JavaScript module like this, where you import any helper plugins at the top of the stylesheet:
 
 ```js
-import PLUGIN from 'http://unpkg.com/jsincss-PLUGIN/index.js'
+import variables from 'https://unpkg.com/jsincss-frontend-variables/index.js'
 
-export default () => {
+export default () => `
 
-  return `
+  ${variables('ul', `
+    --color: blue
+  `)}
+  ${variables('ul li', `
+    color: var(--color);
+    background: var(--background);
+  `)}
 
-    ${PLUGIN()}
-
-  `
-
-}
+`
 ```
 
 And then import both the `jsincss` plugin and the stylesheet into your code and run them like this, suppling any `selector` or `events` list the `jsincss` plugin might need to apply the stylesheet only the the element(s) and event(s) you require, depending on what you're doing:
