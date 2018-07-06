@@ -6,34 +6,34 @@ module.exports = (selector, rule) => {
 
       rule.replace(/--([^;]+):(.+)[;}]*/gm, (string, property, value) => {
 
-         tag.setAttribute(`data-${property}`, value)
+        tag.setAttribute(`data-${property}`, value)
 
-       })
+      })
 
-       const evaluated = rule.replace(/var\(--([^)]+)\)/g, (string, match) => {
+      const evaluated = rule.replace(/var\(--([^)]+)\)/g, (string, match) => {
 
-         if (tag.getAttribute(`data-${match}`) !== null) {
+        if (tag.getAttribute(`data-${match}`) !== null) {
 
-           return tag.getAttribute(`data-${match}`)
+          return tag.getAttribute(`data-${match}`)
 
-         } else if (
-           tag.closest(`[data-${match}]`)
-           && tag.closest(`[data-${match}]`).getAttribute(`data-${match}`) !== null
-         ) {
+        } else if (
+          tag.closest(`[data-${match}]`)
+          && tag.closest(`[data-${match}]`).getAttribute(`data-${match}`) !== null
+        ) {
 
-           return tag.closest(`[data-${match}]`).getAttribute(`data-${match}`)
+          return tag.closest(`[data-${match}]`).getAttribute(`data-${match}`)
 
-         } else {
+        } else {
 
-           if (match in window) {
+          if (match in window) {
 
-             return (new Function(`return ${match}`))() || ''
+            return (new Function(`return ${match}`))() || ''
 
-           }
+          }
 
-         }
+        }
 
-       })
+      })
 
       const attr = selector.replace(/\W/g, '')
 
