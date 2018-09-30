@@ -39,8 +39,6 @@ module.exports = (selector, rule) => {
 
       tag.setAttribute(`data-variable-${attr}`, count)
       styles += `[data-variable-${attr}="${count}"] { ${evaluated} }\n`
-      count++
-
       return styles
 
     }, '')
